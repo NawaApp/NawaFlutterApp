@@ -1,8 +1,0 @@
-.git
-.gitignore
-.pub-cache
-.idea
-.vscode
-build/
-ios/
-android/
