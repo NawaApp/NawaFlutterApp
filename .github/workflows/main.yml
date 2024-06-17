@@ -37,3 +37,4 @@ jobs:
           github_token: ${{ secrets.GH_PAGES_TOKEN }}  # استخدم اسم الـ secret الجديد هنا
           publish_dir: build/web
         if: github.event_name == 'push'
+        
