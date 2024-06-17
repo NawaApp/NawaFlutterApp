@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3 # تحديث النسخة إلى v3
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -37,4 +37,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/web
         if: github.event_name == 'push'
- 
