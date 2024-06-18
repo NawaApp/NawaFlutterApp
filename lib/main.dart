@@ -16,14 +16,14 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Firebase Example',
+      title: 'use copilot in coding',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Firebase Example'),
+          title: const Text('use copilot in coding'),
         ),
         body: const Center(
           child: Text(
-            'Firebase App Initialized!',
+            'use copilot in coding!',
             style: TextStyle(fontSize: 24),
           ),
         ),
