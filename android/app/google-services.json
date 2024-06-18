@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "828091702220",
+    "project_id": "nawa-flutter-app",
+    "storage_bucket": "nawa-flutter-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828091702220:android:64e452420c7d0bc799db69",
+        "android_client_info": {
+          "package_name": "com.example.nawa_flutter_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASYYUy2MLRzTVM-RGXCsYTrJxlYmTebM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
