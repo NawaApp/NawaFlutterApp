@@ -33,14 +33,6 @@
 
     const app = initializeApp(firebaseConfig);
 
-    // تأكد من تسجيل Firebase Analytics قبل استخدامه
-    import("https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js").then(({ getAnalytics }) => {
-      const analytics = getAnalytics(app);
-
-      // الآن يمكنك استخدام التحليلات
-      console.log('Firebase Analytics initialized');
-    });
-
     const messaging = getMessaging(app);
 
     function requestPermission() {
