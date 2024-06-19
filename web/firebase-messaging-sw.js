@@ -1,9 +1,6 @@
-// Import and configure the Firebase SDK
 importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js');
 
-// Initialize the Firebase app in the service worker by passing in the
-// messagingSenderId.
 const firebaseConfig = {
     apiKey: "AIzaSyDlSs-rwemEFsRzSE6OvbZp_uuxjvuCeiw",
     authDomain: "nawa-flutter-app.firebaseapp.com",
@@ -16,13 +13,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// Retrieve an instance of Firebase Messaging so that it can handle background
-// messages.
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
-  console.log('Received background message ', payload);
-  // Customize notification here
+  console.log('Received background message: ', payload);
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
