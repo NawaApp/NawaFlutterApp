@@ -28,7 +28,7 @@ jobs:
         run: flutter test
 
       - name: Build web app
-        run: flutter build web --base-href /NawaFlutterApp/
+        run: flutter build web
         if: github.event_name == 'push'
 
       - name: Deploy to GitHub Pages
@@ -36,5 +36,6 @@ jobs:
         with:
           github_token: ${{ secrets.GH_PAGES_TOKEN }}  # استخدم اسم الـ secret الجديد هنا
           publish_dir: build/web
+          publish_branch: nawaapp.github.io  # Deploy to nawaapp.github.io branch
         if: github.event_name == 'push'
         
