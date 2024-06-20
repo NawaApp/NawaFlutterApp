@@ -34,8 +34,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_PAGES_TOKEN }}  # استخدم اسم الـ secret الجديد هنا
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/web
-          publish_branch: nawaapp.github.io  # Deploy to nawaapp.github.io branch
+          publish_branch: nawaapp.github.io
         if: github.event_name == 'push'
-        
