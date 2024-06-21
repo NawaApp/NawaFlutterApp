@@ -2,68 +2,19 @@
 <html>
 <head>
   <base href="/">
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
-
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="nawa_flutter_app">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
   <link rel="icon" type="image/png" href="favicon.png"/>
-
   <title>nawa_flutter_app</title>
   <link rel="manifest" href="manifest.json">
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDlSs-rwemEFsRzSE6OvbZp_uuxjvuCeiw",
-      authDomain: "nawa-flutter-app.firebaseapp.com",
-      projectId: "nawa-flutter-app",
-      storageBucket: "nawa-flutter-app.appspot.com",
-      messagingSenderId: "828091702220",
-      appId: "1:828091702220:web:f495370b31f220de99db69",
-      measurementId: "G-84G7WP0J3K"
-    };
-
-    const app = initializeApp(firebaseConfig);
-
-    const messaging = getMessaging(app);
-
-    function requestPermission() {
-      Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-          console.log('Notification permission granted.');
-          getToken(messaging, { vapidKey: 'BIscBDMzPhUlXHxOD2qqsfhOneEsSq4MfZ5Rm-zT6bQBiJkJvEEgweiKkNIASWi4eTOEfCN9m2iLWKl0jKWBYTE' }).then((currentToken) => {
-            if (currentToken) {
-              console.log('FCM Token: ', currentToken);
-            } else {
-              console.log('No registration token available. Request permission to generate one.');
-            }
-          }).catch((err) => {
-            console.log('An error occurred while retrieving token. ', err);
-          });
-        } else {
-          console.log('User denied notification permission.');
-        }
-      }).catch((err) => {
-        console.log('An error occurred while requesting permission. ', err);
-      });
-    }
-
-    window.addEventListener('load', () => {
-      requestPermission();
-    });
-  </script>
+  <script src="flutter_bootstrap.js" async></script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
-
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('firebase-messaging-sw.js')
@@ -75,5 +26,7 @@
         });
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
 </body>
 </html>
