@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import "package:universal_html/html.dart" as html;
-import 'firebase_options.dart'; // تأكد من إضافة ملف Firebase options الخاص بك
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,10 +11,10 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key}); // إضافة المُعامل key هنا
+  const MyApp({super.key});
 
   @override
-  MyAppState createState() => MyAppState(); // هنا استخدمنا _MyAppState بدلاً من State<MyApp>
+  MyAppState createState() => MyAppState();
 }
 
 class MyAppState extends State<MyApp> {
@@ -27,6 +27,13 @@ class MyAppState extends State<MyApp> {
   }
 
   void setupFirebaseMessaging() async {
+    NotificationSettings settings = await _firebaseMessaging.requestPermission();
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      print('User granted permission');
+    } else {
+      print('User declined or has not accepted permission');
+    }
+
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print('Got a message whilst in the foreground!');
       print('Message data: ${message.data}');
@@ -47,7 +54,6 @@ class MyAppState extends State<MyApp> {
       print("Token updated: $newToken");
       storeTokenSecurely(newToken);
     });
-
   }
 
   Future<void> _retrieveToken() async {
@@ -70,7 +76,6 @@ class MyAppState extends State<MyApp> {
     } catch (e) {
       print("Error storing token securely: $e");
     }
-    // يمكنك أيضاً إرسال التوكن إلى السيرفر الخاص بك هنا إذا كان ذلك ضرورياً
   }
 
   @override
