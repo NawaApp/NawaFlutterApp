@@ -38,3 +38,12 @@ jobs:
           publish_dir: build/web
           publish_branch: gh-pages
         if: github.event_name == 'push'
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NAWA_FLUTTER_APP }}
+          channelId: live
+          projectId: nawa-flutter-app
+        if: github.event_name == 'push'
