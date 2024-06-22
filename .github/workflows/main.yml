@@ -31,13 +31,13 @@ jobs:
         run: flutter build web
         if: github.event_name == 'push'
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_PAGES_TOKEN_2 }}
-          publish_dir: build/web
-          publish_branch: gh-pages
-        if: github.event_name == 'push'
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GH_PAGES_TOKEN_2 }}
+      #     publish_dir: build/web
+      #     publish_branch: gh-pages
+      #   if: github.event_name == 'push'
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0

@@ -38,7 +38,7 @@ RUN flutter pub get
 RUN flutter build web
 
 # Use a simple web server to serve the static files
-FROM nginx:alpine
+FROM nginx:alpine-slim
 
 # Copy the build output to the web server's root directory
 COPY --from=build /app/build/web /usr/share/nginx/html
