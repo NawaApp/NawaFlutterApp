@@ -16,28 +16,27 @@
   <script src="flutter_bootstrap.js" async></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
+  <script src="config.js"></script>
   <script>
-    window.addEventListener('load', () => {
-      // إعداد Firebase
+    window.addEventListener('load', async () => {
+      const env = await loadEnv();
       const firebaseConfig = {
-        apiKey: "AIzaSyDlSs-rwemEFsRzSE6OvbZp_uuxjvuCeiw",
-        authDomain: "nawa-flutter-app.firebaseapp.com",
-        projectId: "nawa-flutter-app",
-        storageBucket: "nawa-flutter-app.appspot.com",
-        messagingSenderId: "828091702220",
-        appId: "1:828091702220:web:f495370b31f220de99db69",
-        measurementId: "G-84G7WP0J3K"
+        apiKey: env.API_KEY,
+        authDomain: env.AUTH_DOMAIN,
+        projectId: env.PROJECT_ID,
+        storageBucket: env.STORAGE_BUCKET,
+        messagingSenderId: env.MESSAGING_SENDER_ID,
+        appId: env.APP_ID,
+        measurementId: env.MEASUREMENT_ID
       };
 
       firebase.initializeApp(firebaseConfig);
 
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('firebase-messaging-sw.js').then(function(registration) {
-            console.log('تم تسجيل خدمة العميل بنجاح، النطاق: ', registration.scope);
-          }, function(err) {
-            console.error('فشل تسجيل خدمة العميل: ', err);
-          });
+        navigator.serviceWorker.register('firebase-messaging-sw.js').then(function(registration) {
+          console.log('تم تسجيل خدمة العميل بنجاح، النطاق: ', registration.scope);
+        }, function(err) {
+          console.error('فشل تسجيل خدمة العميل: ', err);
         });
       }
 
