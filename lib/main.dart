@@ -162,7 +162,7 @@ class MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('نوى في خدمتك كيف يمكنني مساعدتك'),
+          title: const Text('NAWA'),
         ),
         body: Column(
           children: [
@@ -201,7 +201,7 @@ class MyAppState extends State<MyApp> {
                     child: TextField(
                       controller: _controller,
                       decoration: InputDecoration(
-                        hintText: 'أكتب رسالتك',
+                        hintText: 'message...',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),

@@ -19,27 +19,30 @@
   <script src="config.js"></script>
   <script>
     window.addEventListener('load', async () => {
-      const env = await loadEnv();
-      const firebaseConfig = {
-        apiKey: env.API_KEY,
-        authDomain: env.AUTH_DOMAIN,
-        projectId: env.PROJECT_ID,
-        storageBucket: env.STORAGE_BUCKET,
-        messagingSenderId: env.MESSAGING_SENDER_ID,
-        appId: env.APP_ID,
-        measurementId: env.MEASUREMENT_ID
-      };
+      try {
+        const env = await loadEnv();
+        const firebaseConfig = {
+          apiKey: env.API_KEY,
+          authDomain: env.AUTH_DOMAIN,
+          projectId: env.PROJECT_ID,
+          storageBucket: env.STORAGE_BUCKET,
+          messagingSenderId: env.MESSAGING_SENDER_ID,
+          appId: env.APP_ID,
+          measurementId: env.MEASUREMENT_ID
+        };
 
-      firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
 
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('firebase-messaging-sw.js').then(function(registration) {
-          console.log('تم تسجيل خدمة العميل بنجاح، النطاق: ', registration.scope);
-        }, function(err) {
-          console.error('فشل تسجيل خدمة العميل: ', err);
-        });
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('firebase-messaging-sw.js').then(function(registration) {
+            console.log('تم تسجيل خدمة العميل بنجاح، النطاق: ', registration.scope);
+          }, function(err) {
+            console.error('فشل تسجيل خدمة العميل: ', err);
+          });
+        }
+      } catch (error) {
+        console.error('Error loading env:', error);
       }
-
     });
   </script>
 </head>
