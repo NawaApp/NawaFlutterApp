@@ -75,14 +75,21 @@ jobs:
           echo "WINDOWS_MESSAGING_SENDER_ID=${{ secrets.WINDOWS_MESSAGING_SENDER_ID }}" >> build/web/.env
           echo "WINDOWS_PROJECT_ID=${{ secrets.WINDOWS_PROJECT_ID }}" >> build/web/.env
           echo "WINDOWS_STORAGE_BUCKET=${{ secrets.WINDOWS_STORAGE_BUCKET }}" >> build/web/.env
-          # أضف المزيد من القيم هنا
+        if: github.event_name == 'push'
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_PAGES_TOKEN_2 }}
+          publish_dir: build/web
+          publish_branch: gh-pages
         if: github.event_name == 'push'
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NAWA_FLUTTER_APP }}
+          firebaseServiceAccount: ${{ secrets.FB_SERVICE_ACCOUNT_NAWA_FLUTTER_APP }}
           channelId: live
           projectId: nawa-flutter-app
         if: github.event_name == 'push'
