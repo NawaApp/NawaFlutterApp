@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="nawa_flutter_app">
+  <meta name="google-adsense-account" content="ca-pub-8305303450094949">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>nawa_flutter_app</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="flutter_bootstrap.js" async></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
+  <script src="config.js"></script>
+  <script>
+    window.addEventListener('load', async () => {
+      const env = await loadEnv();
+      const firebaseConfig = {
+        apiKey: env.API_KEY,
+        authDomain: env.AUTH_DOMAIN,
+        projectId: env.PROJECT_ID,
+        storageBucket: env.STORAGE_BUCKET,
+        messagingSenderId: env.MESSAGING_SENDER_ID,
+        appId: env.APP_ID,
+        measurementId: env.MEASUREMENT_ID
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('firebase-messaging-sw.js').then(function(registration) {
+          console.log('تم تسجيل خدمة العميل بنجاح، النطاق: ', registration.scope);
+        }, function(err) {
+          console.error('فشل تسجيل خدمة العميل: ', err);
+        });
+      }
+
+    });
+  </script>
+</head>
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8305303450094949"
+     crossorigin="anonymous"></script>
+  <!-- nawa -->
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-8305303450094949"
+      data-ad-slot="3534089049"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</body>
+</html>
